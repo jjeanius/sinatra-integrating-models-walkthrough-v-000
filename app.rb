@@ -6,11 +6,9 @@ class App < Sinatra::Base
     erb :index
   end
 
-  post '/' do
-    text_from_user = params[:user_text]
+post '/' do
+  @analyzed_text = TextAnalyzer.new(params[:user_text])
 
-    @analyzed_text = textAnalyzer.new(text_from_user)
-
-    erb :results
+  erb :results
   end
 end
